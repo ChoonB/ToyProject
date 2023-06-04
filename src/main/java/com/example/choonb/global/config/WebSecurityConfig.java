@@ -44,7 +44,6 @@ public class WebSecurityConfig {
 
     http.authorizeRequests()
         .antMatchers("/**").permitAll()
-        .anyRequest().authenticated()
         .and()
         .addFilterBefore(new JwtAuthFilter(jwtUtil), UsernamePasswordAuthenticationFilter.class)
         .addFilterBefore(new ExceptionHandlerFilter(), JwtAuthFilter.class);
