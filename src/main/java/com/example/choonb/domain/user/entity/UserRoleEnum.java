@@ -1,5 +1,8 @@
 package com.example.choonb.domain.user.entity;
 
+import lombok.Getter;
+
+@Getter
 public enum UserRoleEnum {
   USER(Authority.USER), // 일반 사용자 권한
   ADMIN(Authority.ADMIN); // 관리자 권한
