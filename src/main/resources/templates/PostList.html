@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>게시판</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    function goToWritePage() {
+      window.location.href = "/post/write";
+    }
+
+    $(document).ready(function() {
+      $.ajax({
+        url: "/api/post",
+        type: "GET",
+        success: function(data) {
+          displayPosts(data);
+        }
+      });
+    });
+
+    function displayPosts(posts) {
+      var postList = $("#postList");
+      postList.empty();
+
+      for (var i = 0; i < posts.length; i++) {
+        var post = posts[i];
+        var listItem = $("<li></li>");
+        var link = $("<a></a>").attr("href", "getPost.html?id=" + post.id).text(post.title);
+        var username = $("<span></span>").text("작성자: " + post.nickname);
+        var createdAt = $("<span></span>").text("작성일: " + post.createdAt);
+
+        listItem.append(link);
+        listItem.append("<br>");
+        listItem.append(username);
+        listItem.append("<br>");
+        listItem.append(createdAt);
+
+        postList.append(listItem);
+      }
+    }
+  </script>
+</head>
+<body>
+<h2>게시물 목록</h2>
+<ul id="postList">
+  <!-- 게시물 목록이 동적으로 추가될 위치 -->
+</ul>
+
+<button onclick="goToWritePage()">게시물 작성페이지</button>
+</body>
+</html>

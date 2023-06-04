@@ -19,6 +19,8 @@ import org.springframework.web.filter.OncePerRequestFilter;
 @Slf4j
 public class JwtAuthFilter extends OncePerRequestFilter {
 
+//  JWT 토큰을 필터로 적용
+
   private final JwtUtil jwtUtil;
   @Override
   protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,

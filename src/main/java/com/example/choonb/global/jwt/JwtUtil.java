@@ -2,7 +2,7 @@ package com.example.choonb.global.jwt;
 
 
 import com.example.choonb.domain.user.entity.UserRoleEnum;
-import com.example.choonb.global.security.UserDetaisServiceImpl;
+import com.example.choonb.global.security.UserDetailsServiceImpl;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
@@ -33,7 +33,7 @@ public class JwtUtil {
   public static final String AUTHORIZATION_KEY = "auth";
   private static final String BEARER_PREFIX = "Bearer ";
   private static final long TOKEN_TIME = 60 * 60 * 1000L;
-  private final UserDetaisServiceImpl userDetaisService;
+  private final UserDetailsServiceImpl userDetaisService;
 
 
   @Value("${jwt.secret.key}")

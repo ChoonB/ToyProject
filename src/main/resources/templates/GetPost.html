@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>상세 게시물</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    function goToPostPage() {
+      window.location.href = "/post";
+    }
+    $(document).ready(function() {
+      var postId = 1; // 조회할 게시물의 ID를 설정하세요
+      $.ajax({
+        url: "/api/post/" + postId,
+        type: "GET",
+        success: function(data) {
+          displayPost(data);
+        }
+      });
+    });
+
+    function displayPost(post) {
+      $("#title").text(post.title);
+      $("#nickname").text("작성자: " + post.nickname);
+      $("#content").text(post.content);
+      $("#createdAt").text("작성일: " + post.createdAt);
+      $("#modifiedAt").text("수정일: " + post.modifiedAt);
+    }
+  </script>
+</head>
+<body>
+<h2>상세 게시물</h2>
+<div>
+  <h3 id="title"></h3>
+  <p id="nickname"></p>
+  <p id="content"></p>
+  <p id="createdAt"></p>
+  <p id="modifiedAt"></p>
+</div>
+
+<button onclick="goToPostPage()">게시판으로</button>
+</body>
+</html>
