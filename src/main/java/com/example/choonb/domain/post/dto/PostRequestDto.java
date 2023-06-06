@@ -1,7 +1,6 @@
 package com.example.choonb.domain.post.dto;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,6 +14,4 @@ public class PostRequestDto {
   @NotBlank
   private String content;
 
-  @NotNull
-  private boolean adminPermission;
 }

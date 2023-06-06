@@ -27,8 +27,6 @@ public class Post extends Timestamped{
   @Column(nullable = false)
   private String content;
 
-  @Column(nullable = false)
-  private boolean adminPermission;
 
   @ManyToOne
   @JoinColumn(name = "user_id", nullable = false)
@@ -38,12 +36,10 @@ public class Post extends Timestamped{
     this.title = postRequestDto.getTitle();
     this.content = postRequestDto.getContent();
     this.user = user;
-    this.adminPermission = postRequestDto.isAdminPermission();
   }
 
   public void update(PostRequestDto postRequestDto) {
     this.title = postRequestDto.getTitle();
     this.content = postRequestDto.getContent();
-    this.adminPermission = postRequestDto.isAdminPermission();
   }
 }
