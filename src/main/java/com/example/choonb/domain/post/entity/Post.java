@@ -1,16 +1,22 @@
 package com.example.choonb.domain.post.entity;
 
+import com.example.choonb.domain.comment.entity.Comment;
 import com.example.choonb.domain.post.dto.PostRequestDto;
 import com.example.choonb.domain.user.entity.User;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
 
 @Entity
 @Getter
@@ -27,10 +33,13 @@ public class Post extends Timestamped{
   @Column(nullable = false)
   private String content;
 
-
   @ManyToOne
   @JoinColumn(name = "user_id", nullable = false)
   private User user;
+
+  @OneToMany(mappedBy = "post", fetch = FetchType.EAGER)
+  private List<Comment> commentList = new ArrayList<>();
+
 
   public Post(PostRequestDto postRequestDto, User user) {
     this.title = postRequestDto.getTitle();
