@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -37,7 +36,7 @@ public class Post extends Timestamped{
   @JoinColumn(name = "user_id", nullable = false)
   private User user;
 
-  @OneToMany(mappedBy = "post", fetch = FetchType.EAGER)
+  @OneToMany(mappedBy = "post")
   private List<Comment> commentList = new ArrayList<>();
 
 
@@ -50,5 +49,9 @@ public class Post extends Timestamped{
   public void update(PostRequestDto postRequestDto) {
     this.title = postRequestDto.getTitle();
     this.content = postRequestDto.getContent();
+  }
+
+  public void addComment(Comment comment) {
+    this.commentList.add(comment);
   }
 }

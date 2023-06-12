@@ -18,6 +18,7 @@ public enum ExceptionType {
   NOT_FOUND_USER_EXCEPTION(HttpStatus.NOT_FOUND, "사용자를 찾을 수 없습니다."),
   NOT_FOUND_CACHE_EXCEPTION(HttpStatus.NOT_FOUND, "해당 캐시를 찾을 수 없습니다."),
   NOT_FOUND_POST_EXCEPTION(HttpStatus.NOT_FOUND, "해당 게시글을 찾을 수 없습니다."),
+  NOT_FOUND_COMMENT_EXCEPTION(HttpStatus.NOT_FOUND, "해당 댓글을 찾을 수 없습니다."),
 
   /* 401, UNAUTHORIZED */
   USER_UNAUTHORIZED_EXCEPTION(HttpStatus.UNAUTHORIZED, "사용자의 권한이 없습니다."),
